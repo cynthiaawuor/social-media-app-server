@@ -1,17 +1,18 @@
-import  Express  from "express";
-import userRouter from "./routes/users.js";
-import postRouter from "./routes/posts.js";
-import commentRouter from "./routes/comments.js";
-import likeRouter from "./routes/likes.js";
-import authRouter from "./routes/auth.js"
+import  express  from "express";
+import userRoutes from "./routes/users.js";
+import postRoutes from "./routes/posts.js";
+import commentRoutes from "./routes/comments.js";
+import likeRoutes from "./routes/likes.js";
+import authRoutes from "./routes/auth.js"
 
-const app = Express();
+const app = express();
 
-app.use("/api/auth", authRouter);
-app.use("/api/users", userRouter);
-app.use("/api/posts", postRouter);
-app.use("/api/comments", commentRouter);
-app.use("/api/likes", likeRouter);
+app.use(express.json()); //middleware to read req.body.<params> //used in place of body.parser()
+app.use("/auth", authRoutes)
+app.use("/users", userRoutes);
+app.use("/posts", postRoutes);
+app.use("/comments", commentRoutes);
+app.use("/likes", likeRoutes);
 
 const port = 8000;
 
